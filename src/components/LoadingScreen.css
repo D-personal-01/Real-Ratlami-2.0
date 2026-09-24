@@ -1,0 +1,162 @@
+/* 1-Second Fizz Loading Screen */
+.fizz-loader-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #d9b8b8;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+  pointer-events: all;
+}
+
+.fizz-loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Ambient Fizz Bubbles Container */
+.fizz-bubbles-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fizz-particle {
+  position: absolute;
+  bottom: -20px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.15));
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  animation: floatUp 1.8s infinite linear;
+}
+
+.fizz-p1 { left: 18%; width: 14px; height: 14px; animation-delay: 0s; animation-duration: 1.4s; }
+.fizz-p2 { left: 32%; width: 8px; height: 8px; animation-delay: 0.2s; animation-duration: 1.2s; }
+.fizz-p3 { left: 45%; width: 18px; height: 18px; animation-delay: 0.1s; animation-duration: 1.6s; }
+.fizz-p4 { left: 60%; width: 10px; height: 10px; animation-delay: 0.3s; animation-duration: 1.3s; }
+.fizz-p5 { left: 74%; width: 16px; height: 16px; animation-delay: 0.05s; animation-duration: 1.5s; }
+.fizz-p6 { left: 86%; width: 12px; height: 12px; animation-delay: 0.25s; animation-duration: 1.4s; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Center Content */
+.fizz-loader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+/* Arc of 6 Flavor Dots (matching reference image curvature) */
+.flavor-dots-arc {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  height: 48px;
+  margin-bottom: 22px;
+}
+
+.flavor-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18), 0 0 12px currentColor;
+  animation: dotPop 0.9s infinite ease-in-out;
+  transition: transform 0.2s ease;
+}
+
+/* Arch Heights (curved apex in the center like Image 2) */
+.flavor-dot:nth-child(1) { transform: translateY(12px); animation-delay: 0.0s; }
+.flavor-dot:nth-child(2) { transform: translateY(4px);  animation-delay: 0.12s; }
+.flavor-dot:nth-child(3) { transform: translateY(-4px); animation-delay: 0.24s; }
+.flavor-dot:nth-child(4) { transform: translateY(-4px); animation-delay: 0.36s; }
+.flavor-dot:nth-child(5) { transform: translateY(4px);  animation-delay: 0.48s; }
+.flavor-dot:nth-child(6) { transform: translateY(12px); animation-delay: 0.60s; }
+
+@keyframes dotPop {
+  0%, 100% {
+    scale: 0.9;
+    filter: brightness(0.9);
+  }
+  50% {
+    scale: 1.25;
+    filter: brightness(1.25);
+  }
+}
+
+/* Brand Name */
+.fizz-brand-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #141B22;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
+  line-height: 1.1;
+}
+
+/* Subtitle (inspired by POPPING FLAVORS • FIZZING...) */
+.fizz-loader-subtext {
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #3D2D2D;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.85;
+}
+
+.fizz-loader-subtext span {
+  display: inline-block;
+  animation: pulseSubtext 1s infinite ease-in-out;
+}
+
+@keyframes pulseSubtext {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .flavor-dots-arc {
+    gap: 10px;
+  }
+  .flavor-dot {
+    width: 12px;
+    height: 12px;
+  }
+  .fizz-brand-title {
+    letter-spacing: 0.1em;
+  }
+}

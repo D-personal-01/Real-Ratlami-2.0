@@ -1,0 +1,348 @@
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(20, 27, 34, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 32px);
+  overflow-y: auto;
+}
+
+/* Modal Card */
+.flavor-modal-card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(20, 27, 34, 0.25);
+  animation: modalScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(20, 27, 34, 0.1);
+  color: var(--color-text-primary);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-smooth);
+}
+
+.modal-close-btn:hover {
+  background-color: #141B22;
+  color: #FFFFFF;
+}
+
+/* Modal Body Grid */
+.modal-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* Poster Column */
+.modal-poster-col {
+  position: relative;
+  background-color: #141B22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modal-poster-img {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+  display: block;
+}
+
+.poster-zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.poster-zoom-hint span {
+  font-size: 0.72rem;
+  color: #FFFFFF;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Details Column */
+.modal-details-col {
+  padding: clamp(24px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.modal-flavor-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.modal-flavor-name {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #142232;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.modal-flavor-statement {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-btn-navy);
+  margin-bottom: 12px;
+  background-color: #FAF5ED;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-btn-navy);
+}
+
+.modal-flavor-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+/* Taste Profile */
+.taste-profile-section {
+  margin-bottom: 20px;
+}
+
+.taste-profile-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+}
+
+.taste-bars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.taste-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.taste-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.taste-meter {
+  height: 6px;
+  background-color: #EDE5D8;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.taste-meter-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.6s ease;
+}
+
+/* Ingredients Box */
+.ingredients-box {
+  background-color: var(--color-bg-base);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.box-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.ingredients-text {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  border-top: 1px dashed rgba(20, 27, 34, 0.12);
+  padding-top: 6px;
+}
+
+/* Pack Selector */
+.pack-selector-group {
+  margin-bottom: 20px;
+}
+
+.pack-selector-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.pack-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.pack-options-three {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.pack-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border-subtle);
+  background: none;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.pack-option-btn:hover {
+  border-color: var(--color-border-medium);
+}
+
+.pack-option-btn.active {
+  border-color: var(--color-btn-navy);
+  background-color: #FAF5ED;
+}
+
+.pack-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.pack-price {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-btn-navy);
+  margin-top: 2px;
+}
+
+/* CTA Row */
+.modal-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-border-medium);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  height: 48px;
+}
+
+.counter-btn {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-val {
+  min-width: 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.modal-add-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cart-total-pill {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .modal-body-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-poster-col {
+    max-height: 280px;
+  }
+
+  .modal-poster-img {
+    min-height: auto;
+    max-height: 280px;
+  }
+
+  .taste-bars-grid {
+    grid-template-columns: 1fr;
+  }
+}

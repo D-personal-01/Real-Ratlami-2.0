@@ -1,0 +1,366 @@
+/* Flavors Showcase Section */
+.flavors-section {
+  background-color: #FAF5ED;
+  padding-top: clamp(60px, 8vw, 100px);
+  padding-bottom: clamp(60px, 8vw, 110px);
+  position: relative;
+  overflow: hidden;
+}
+
+.flavors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.flavors-header {
+  text-align: center;
+  max-width: 680px;
+  margin-bottom: clamp(32px, 5vw, 52px);
+}
+
+.flavors-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-weight: 700;
+  color: #142232;
+  margin-bottom: 12px;
+  letter-spacing: -0.015em;
+}
+
+.flavors-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+/* Category Filter Pills */
+.flavor-filter-group {
+  display: inline-flex;
+  background-color: #EDE5D8;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-tab {
+  background: none;
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  min-height: 44px;
+  transition: all var(--transition-smooth);
+}
+
+.filter-tab:hover {
+  color: var(--color-text-primary);
+}
+
+.filter-tab.active {
+  background-color: #FFFFFF;
+  color: var(--color-btn-navy);
+  box-shadow: 0 2px 8px rgba(20, 27, 34, 0.08);
+}
+
+/* Flavors Grid (Fluid 3-state reflow: 6 cols on large screen, 3 cols on desktop/laptop, 2 cols on tablet, 1 col on mobile) */
+.flavors-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 1200px) {
+  .flavors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flavors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flavors-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Flavor Card */
+.flavor-card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(20, 27, 34, 0.06);
+  padding: 18px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(20, 27, 34, 0.03);
+}
+
+.flavor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(20, 27, 34, 0.08);
+  border-color: rgba(20, 27, 34, 0.12);
+}
+
+/* Bottle Image Box */
+.flavor-card-image-box {
+  position: relative;
+  background-color: var(--flavor-tint, #FAF5ED);
+  border-radius: var(--radius-sm);
+  padding: 24px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.flavors-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-btn-navy);
+  margin-bottom: 8px;
+}
+
+.flavor-card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--color-btn-navy);
+  color: #FFFFFF;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.flavor-card-volume {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-text-secondary);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border: 1px solid rgba(20, 27, 34, 0.08);
+}
+
+.flavor-official-stmt {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  background-color: rgba(20, 27, 34, 0.025);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--flavor-accent, var(--color-btn-navy));
+}
+
+.flavor-bottle-image {
+  height: 220px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 12px 16px rgba(30, 20, 10, 0.18));
+}
+
+.flavor-card:hover .flavor-bottle-image {
+  transform: scale(1.08) translateY(-4px);
+}
+
+.bottle-shadow {
+  width: 70%;
+  height: 12px;
+  background: radial-gradient(ellipse at center, rgba(30, 20, 10, 0.25) 0%, transparent 75%);
+  margin-top: 8px;
+}
+
+.view-notes-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(26, 44, 66, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  text-align: center;
+}
+
+.view-notes-overlay span {
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.flavor-card-image-box:hover .view-notes-overlay,
+.flavor-card-image-box:focus-visible .view-notes-overlay {
+  opacity: 1;
+}
+
+/* Flavor Card Info */
+.flavor-card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.flavor-tagline {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.flavor-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.flavor-card-price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-btn-navy);
+  margin-bottom: 16px;
+}
+
+.per-bottle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Flavor Actions */
+.flavor-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.add-to-cart-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 12px;
+  background-color: var(--color-btn-navy);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--color-btn-navy-hover);
+  transform: translateY(-1px);
+}
+
+.quick-view-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5EFE6;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.quick-view-btn:hover {
+  background-color: #E8DDD0;
+  color: var(--color-btn-navy);
+}
+
+/* Bottom CTA */
+.flavors-bottom-cta {
+  margin-bottom: 48px;
+}
+
+/* Bottom Reference Divider: FIND YOUR FAVORITE FIZZ */
+.flavors-divider-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 580px;
+  margin-top: 12px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(20, 27, 34, 0.25);
+}
+
+.divider-text {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(20, 27, 34, 0.7);
+}
+
+/* Corner Botanical Accents */
+.corner-accent {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.corner-accent-left {
+  bottom: 0px;
+  left: clamp(10px, 3vw, 40px);
+}
+
+.corner-accent-right {
+  bottom: 0px;
+  right: clamp(10px, 3vw, 40px);
+}
